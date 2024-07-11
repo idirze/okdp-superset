@@ -75,6 +75,10 @@ okdp:
       }
 
 superset:
+  image:
+    repository: quay.io/okdp/okdp-superset
+    tag: 4.0.2-1.0.0
+    pullPolicy: IfNotPresent
   supersetNode:
     # Connections to an existing database and cache
     connections:

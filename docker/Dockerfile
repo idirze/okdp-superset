@@ -1,7 +1,7 @@
 ARG SUPERSET_VERSION=4.0.2
 
 FROM apache/superset:${SUPERSET_VERSION}
-COPY requirements.txt .
+COPY docker/requirements.txt .
 
 USER root
 
