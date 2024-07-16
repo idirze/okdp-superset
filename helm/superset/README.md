@@ -317,7 +317,7 @@ string
 </td>
 			<td><div style="max-width: 300px;">
 <pre lang="json">
-""
+"bnAL0bMMkEeQuw5ZOsFNrO5FGRmBFJwYIlkU3qoFU0txlvFJkLurRw9k"
 </pre>
 </div></td>
 			<td>Used for signing the superset session cookie and to encrypt sensitive data on Superset's metadata database.
