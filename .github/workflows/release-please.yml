@@ -38,27 +38,33 @@ jobs:
   release-please:
     runs-on: ubuntu-latest
     outputs:
-      release_created: ${{ steps.release-please.outputs.release_created }}
-      tag_name: ${{ steps.release-please.outputs.tag_name }}
-      version: ${{ steps.release-please.outputs.version }}
-      paths_released: ${{ steps.release-please.outputs.paths_released }}
+      docker-release_created: ${{ steps.release-please.outputs.docker--release_created }}
+      docker-tag_name: ${{ steps.release-please.outputs.docker--tag_name }}
+      docker-version: ${{ steps.release-please.outputs.docker--version }}
+      helm-release_created: ${{ steps.release-please.outputs.helm--release_created }}
+      helm-tag_name: ${{ steps.release-please.outputs.helm--tag_name }}
+      helm-version: ${{ steps.release-please.outputs.helm--version }}
     # Skip the release process in the fork
     # The pull request should come from the same repo (github_token from the fork does not have write permissions)
     if: github.repository_owner == 'idirze' && github.event.pull_request.merged == true && github.event.pull_request.head.repo.full_name == github.repository
     steps:
       - uses: googleapis/release-please-action@v4
         id: release-please
+
       - run: |
-          echo "release_created: ${{ steps.release-please.outputs.release_created }}"
-          echo "tag_name: ${{ steps.release-please.outputs.tag_name }}"
-          echo "version: ${{ steps.release-please.outputs.version }}"
-          echo "paths_released: ${{ steps.release-please.outputs.paths_released }}"
+          echo "docker-release_created: ${{ steps.release-please.outputs.docker--release_created }}"
+          echo "docker-tag_name: ${{ steps.release-please.outputs.docker--tag_name }}"
+          echo "docker-version: ${{ steps.release-please.outputs.docker--version }}"
+        
+          echo "helm-release_created: ${{ steps.release-please.outputs.helm--release_created }}"
+          echo "helm-tag_name: ${{ steps.release-please.outputs.helm--tag_name }}"
+          echo "helm-version: ${{ steps.release-please.outputs.helm--version }}"
         shell: bash
 
   docker-publish:
     name: publish-${{ matrix.image }}
     needs: [release-please]
-    if: github.repository_owner == 'idirze' && needs.release-please.outputs.release_created == 'true'
+    if: github.repository_owner == 'idirze' && needs.release-please.outputs.docker--release_created == 'true'
     strategy:
       fail-fast: false
       matrix:
@@ -72,7 +78,7 @@ jobs:
 
   helm-chart-publish:
     needs: [release-please]
-    if: github.repository_owner == 'idirze' && needs.release-please.outputs.release_created == 'true'
+    if: github.repository_owner == 'idirze' && needs.release-please.outputs.helm--release_created == 'true'
     uses: okdp/gh-workflows/.github/workflows/helm-publish-template.yml@v1
     with:
       path: helm/
