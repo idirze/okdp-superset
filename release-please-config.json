@@ -13,8 +13,7 @@
       "bump-minor-pre-major": false,
       "bump-patch-for-minor-pre-major": false,
       "draft": false,
-      "prerelease": true,
-      "prerelease-type": "okdp",
+      "prerelease": false,
       "include-component-in-tag": true
     },
     "docker": {
@@ -27,8 +26,7 @@
       "bump-minor-pre-major": false,
       "bump-patch-for-minor-pre-major": false,
       "draft": false,
-      "prerelease": true,
-      "prerelease-type": "okdp",
+      "prerelease": false,
       "include-component-in-tag": false
     }
   },

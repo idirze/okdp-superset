@@ -41,9 +41,9 @@ jobs:
       docker-release_created: ${{ steps.release-please.outputs.docker--release_created }}
       docker-tag_name: ${{ steps.release-please.outputs.docker--tag_name }}
       docker-version: ${{ steps.release-please.outputs.docker--version }}
-      helm-release_created: ${{ steps.release-please.outputs.helm/superset--release_created }}
-      helm-tag_name: ${{ steps.release-please.outputs.helm/superset--tag_name }}
-      helm-version: ${{ steps.release-please.outputs.helm/superset--version }}
+      helm-release_created: ${{ steps.release-please.outputs.helm--superset--release_created }}
+      helm-tag_name: ${{ steps.release-please.outputs.helm--superset--tag_name }}
+      helm-version: ${{ steps.release-please.outputs.helm--superset--version }}
     # Skip the release process in the fork
     # The pull request should come from the same repo (github_token from the fork does not have write permissions)
     if: github.repository_owner == 'idirze' && github.event.pull_request.merged == true && github.event.pull_request.head.repo.full_name == github.repository
