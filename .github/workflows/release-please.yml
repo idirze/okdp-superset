@@ -51,6 +51,16 @@ jobs:
       - uses: googleapis/release-please-action@v4
         id: release-please
 
+      - run: |
+          echo "docker-release_created: ${{ steps.release-please.outputs.docker--release_created }}"
+          echo "docker-tag_name: ${{ steps.release-please.outputs.docker--tag_name }}"
+          echo "docker-version: ${{ steps.release-please.outputs.docker--version }}"
+          
+          echo "helm-release_created: ${{ steps.release-please.outputs.helm--release_created }}"
+          echo "helm-tag_name: ${{ steps.release-please.outputs.helm--tag_name }}"
+          echo "helm-version: ${{ steps.release-please.outputs.helm--version }}"
+        shell: bash
+
   docker-publish:
     name: publish-${{ matrix.image }}
     needs: [release-please]
@@ -73,7 +83,7 @@ jobs:
     with:
       path: helm/
       chart_name: superset
-      version: ${{ needs.release-please.outputs.version }}
-      git_tag_name: ${{ needs.release-please.outputs.tag_name }}
+      version: ${{ needs.release-please.outputs.helm-version }}
+      git_tag_name: ${{ needs.release-please.outputs.helm-tag_name }}
     secrets: inherit
 
