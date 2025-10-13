@@ -61,6 +61,13 @@ jobs:
           echo "helm-version: ${{ steps.release-please.outputs.helm--superset--version }}"
         shell: bash
 
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const outputs = ${{ toJSON(steps.release-please.outputs) }}
+            console.log('📦 Full release-please outputs:')
+            console.log(JSON.stringify(outputs, null, 2))
+
   docker-publish:
     name: publish-${{ matrix.image }}
     needs: [release-please]
