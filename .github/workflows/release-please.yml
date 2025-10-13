@@ -81,7 +81,7 @@ jobs:
     if: github.repository_owner == 'idirze' && needs.release-please.outputs.helm-release_created == 'true'
     uses: okdp/gh-workflows/.github/workflows/helm-publish-template.yml@v1
     with:
-      path: helm/
+      path: helm/superset
       chart_name: superset
       version: ${{ needs.release-please.outputs.helm-version }}
       git_tag_name: ${{ needs.release-please.outputs.helm-tag_name }}
