@@ -53,7 +53,7 @@ jobs:
           echo "tag_name: ${{ steps.release-please.outputs.tag_name }}"
           echo "version: ${{ steps.release-please.outputs.version }}"
           echo "paths_released: ${{ steps.release-please.outputs.paths_released }}"
-        bash: shell
+        shell: bash
 
   docker-publish:
     name: publish-${{ matrix.image }}
