@@ -56,9 +56,9 @@ jobs:
           echo "docker-tag_name: ${{ steps.release-please.outputs.docker--tag_name }}"
           echo "docker-version: ${{ steps.release-please.outputs.docker--version }}"
           
-          echo "helm-release_created: ${{ steps.release-please.outputs.helm/superset--release_created }}"
-          echo "helm-tag_name: ${{ steps.release-please.outputs.helm/superset--tag_name }}"
-          echo "helm-version: ${{ steps.release-please.outputs.helm/superset--version }}"
+          echo "helm-release_created: ${{ steps.release-please.outputs.helm--superset--release_created }}"
+          echo "helm-tag_name: ${{ steps.release-please.outputs.helm--superset--tag_name }}"
+          echo "helm-version: ${{ steps.release-please.outputs.helm--superset--version }}"
         shell: bash
 
   docker-publish:
