@@ -64,7 +64,7 @@ jobs:
   docker-publish:
     name: publish-${{ matrix.image }}
     needs: [release-please]
-    if: github.repository_owner == 'idirze' && needs.release-please.outputs.docker--release_created == 'true'
+    if: github.repository_owner == 'idirze' && needs.release-please.outputs.docker-release_created == 'true'
     strategy:
       fail-fast: false
       matrix:
@@ -78,7 +78,7 @@ jobs:
 
   helm-chart-publish:
     needs: [release-please]
-    if: github.repository_owner == 'idirze' && needs.release-please.outputs.helm--release_created == 'true'
+    if: github.repository_owner == 'idirze' && needs.release-please.outputs.helm-release_created == 'true'
     uses: okdp/gh-workflows/.github/workflows/helm-publish-template.yml@v1
     with:
       path: helm/
