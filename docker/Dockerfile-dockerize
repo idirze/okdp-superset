@@ -5,7 +5,7 @@ FROM apache/superset:${SUPERSET_VERSION}-dockerize
 USER root
 
 # Apply security updates
-RUN set -eux; \
+RUN set -ex; \
     apk update; \
     apk upgrade --no-cache --available; \
     rm -rf /var/cache/apk/*
