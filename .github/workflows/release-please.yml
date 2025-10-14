@@ -46,7 +46,7 @@ jobs:
       helm-version: ${{ steps.release-please.outputs['helm/superset--version'] }}
     # Skip the release process in the fork
     # The pull request should come from the same repo (github_token from the fork does not have write permissions)
-    if: github.repository_owner == 'OKDP' && github.event.pull_request.merged == true && github.event.pull_request.head.repo.full_name == github.repository
+    if: github.repository_owner == 'idirze' && github.event.pull_request.merged == true && github.event.pull_request.head.repo.full_name == github.repository
     steps:
       - uses: googleapis/release-please-action@v4
         id: release-please
@@ -54,7 +54,7 @@ jobs:
   docker-publish:
     name: publish-${{ matrix.image }}
     needs: [release-please]
-    if: github.repository_owner == 'OKDP' && needs.release-please.outputs.docker-release_created == 'true'
+    if: github.repository_owner == 'idirze' && needs.release-please.outputs.docker-release_created == 'true'
     strategy:
       fail-fast: false
       matrix:
@@ -68,7 +68,7 @@ jobs:
 
   helm-chart-publish:
     needs: [release-please]
-    if: github.repository_owner == 'OKDP' && needs.release-please.outputs.helm-release_created == 'true'
+    if: github.repository_owner == 'idirze' && needs.release-please.outputs.helm-release_created == 'true'
     uses: okdp/gh-workflows/.github/workflows/helm-publish-template.yml@v1
     with:
       path: helm/superset
