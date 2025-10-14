@@ -14,8 +14,7 @@
       "bump-patch-for-minor-pre-major": false,
       "draft": false,
       "prerelease": false,
-      "include-component-in-tag": true,
-      "manifest-file": ".release-please-manifest-helm.json"
+      "include-component-in-tag": true
     },
     "docker": {
       "component": "okdp-superset",
@@ -28,8 +27,7 @@
       "bump-patch-for-minor-pre-major": false,
       "draft": false,
       "prerelease": false,
-      "include-component-in-tag": false,
-      "manifest-file": ".release-please-manifest-docker.json"
+      "include-component-in-tag": false
     }
   },
   "changelog-sections": [
