@@ -51,11 +51,13 @@ jobs:
       - uses: googleapis/release-please-action@v4
         id: release-please-docker
         with:
+          config-file: release-please-config-docker.json
           manifest-file: .release-please-manifest-docker.json
 
       - uses: googleapis/release-please-action@v4
         id: release-please-helm
         with:
+          config-file: release-please-config-helm.json
           manifest-file: .release-please-manifest-helm.json
 
   docker-publish:
