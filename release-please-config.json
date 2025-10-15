@@ -1,6 +1,8 @@
 {
   "separate-pull-requests": true,
   "include-v-in-tag": true,
+  "bump-minor-pre-major": false,
+  "bump-patch-for-minor-pre-major": false,
   "packages": {
     "helm/superset": {
       "component": "helm-okdp-superset",
@@ -10,8 +12,6 @@
       "changelog-path": "CHANGELOG.md",
       "release-type": "helm",
       "changelog-type": "default",
-      "bump-minor-pre-major": false,
-      "bump-patch-for-minor-pre-major": false,
       "draft": false,
       "prerelease": false,
       "include-component-in-tag": true
@@ -23,8 +23,6 @@
       "changelog-path": "CHANGELOG.md",
       "release-type": "node",
       "changelog-type": "default",
-      "bump-minor-pre-major": false,
-      "bump-patch-for-minor-pre-major": false,
       "draft": false,
       "prerelease": false,
       "include-component-in-tag": false
